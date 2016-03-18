@@ -56,7 +56,7 @@ log.add(log.transports.Console, {
     colorize: (process.stdout.isTTY && process.stderr.isTTY),
     level: args.logLevel.toLowerCase(),
     timestamp: function () {
-      return strftime("%H:%M:%S.%L", new Date());
+      return strftime("%Y-%m-%d %H:%M:%S.%L", new Date());
     },
     label: 'ConfigProxy',
 });
