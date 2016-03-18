@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 //
 // cli entrypoint for starting a Configurable Proxy
-// 
+//
 // Copyright (c) Jupyter Development Team.
 // Distributed under the terms of the Modified BSD License.
 //
@@ -41,7 +41,7 @@ log.add(log.transports.Console, {
     colorize: (process.stdout.isTTY && process.stderr.isTTY),
     level: args.logLevel.toLowerCase(),
     timestamp: function () {
-      return strftime("%H:%M:%S.%L", new Date());
+      return strftime("%Y-%m-%d %H:%M:%S.%L", new Date());
     },
     label: 'ConfigProxy',
 });
@@ -118,10 +118,10 @@ log.info("Proxy API at %s://%s:%s/api/routes",
 // Redirect HTTP to HTTPS on the proxy's port
 if (options.redirectPort && listen.port !== 80) {
   var http = require('http');
-  
+
   http.createServer(function (req, res) {
     var host = req.headers['host'].split(':')[0];
-    
+
     // Make sure that when we redirect, it's to the port the proxy is running on
     if (listen.port !== 443) {
         host = host + ':' + listen.port;
